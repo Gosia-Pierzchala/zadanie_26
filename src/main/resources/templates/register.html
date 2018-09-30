@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Rejestracja</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+
+<form th:action="@{/registration}" method="post">
+    <input type="text" name="username" placeholder="Nazwa użytkownika"/> <br/>
+    <input type="text" name="firstName" placeholder="Imię"/> <br/>
+    <input type="text" name="lastName" placeholder="Nazwisko"/> <br/>
+    <input type="password" name="password" placeholder="Hasło"/> <br/>
+    <input type="submit" value="Rejestruj"/>
+</form>
+
+</body>
+</html>
