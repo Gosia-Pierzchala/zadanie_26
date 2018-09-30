@@ -13,16 +13,16 @@ public class User {
     private Long id;
     private String username;
     private String password;
-    private String firsName;
+    private String firstName;
     private String lastName;
     private boolean enabled;
 
     public User(){}
 
-    public User(String username, String password, String firsName, String lastName) {
+    public User(String username, String password, String firstName, String lastName) {
         this.username = username;
         this.password = password;
-        this.firsName = firsName;
+        this.firstName = firstName;
         this.lastName = lastName;
     }
 
@@ -50,12 +50,12 @@ public class User {
         this.password = password;
     }
 
-    public String getFirsName() {
-        return firsName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirsName(String firsName) {
-        this.firsName = firsName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
