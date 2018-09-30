@@ -11,6 +11,11 @@ import java.security.Principal;
 @Controller
 public class LoginController {
 
+    @GetMapping("/")
+    public String home(){
+        return "home";
+    }
+
     @GetMapping("/login")
     public String loginForm() {
         return "login";
