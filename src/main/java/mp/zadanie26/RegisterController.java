@@ -14,12 +14,12 @@ public class RegisterController {
         this.userService = userService;
     }
 
-    @GetMapping("/registration")
+    @GetMapping("/register")
     public String registerForm() {
         return "register";
     }
 
-    @PostMapping("/registration")
+    @PostMapping("/register")
     public String register(@RequestParam String username,
                            @RequestParam String firstName,
                            @RequestParam String lastName,
