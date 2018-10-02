@@ -3,26 +3,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
     <title>Użytkownicy</title>
 </head>
 <body>
 
+<h1>Lista użytkowników</h1>
 
-<table>
-
+<table class="table">
     <thead>
-    <th>Imię</th>
-    <th>Nazwisko</th>
-    <th>Nazwa użytkownika</th>
+    <tr>
+        <th scope="col">Imię</th>
+        <th scope="col">Nazwisko</th>
+        <th scope="col">Nazwa użytkownika</th>
+        <th scope="col"></th>
+    </tr>
     </thead>
-
-    <tr th:each="user:${users}">
+    <tbody>
+    <tr th:each="user: ${users}">
         <td th:text="${user.firstName}"></td>
         <td th:text="${user.lastName}"></td>
         <td th:text="${user.username}"></td>
+        <td><a th:href="'/editRole?username=' + ${user.username}">Zmień rolę</a></td>
     </tr>
-
+    </tbody>
 </table>
+
 </body>
 
 </body>
