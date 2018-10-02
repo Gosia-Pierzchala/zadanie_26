@@ -1,5 +1,6 @@
 package mp.zadanie26;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,9 +14,11 @@ import java.util.List;
 public class LoginController {
 
     private UserRepository userRepository;
+    private PasswordEncoder passwordEncoder;
 
-    public LoginController(UserRepository userRepository) {
+    public LoginController(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping("/")
@@ -37,7 +40,8 @@ public class LoginController {
     }
 
     @GetMapping("/editUser")
-    public String edit(@RequestParam String username, Model model) {
+    public String edit(Principal principal, Model model) {
+        String username = principal.getName();
         User user = userRepository.findByUsername(username);
         model.addAttribute("user", user);
         return "editUser";
@@ -46,7 +50,7 @@ public class LoginController {
     @PostMapping("/editUser")
     public String edit(User user) {
         userRepository.save(user);
-        return "redirect:";
+        return "redirect:/";
     }
 
     @GetMapping("/users")
