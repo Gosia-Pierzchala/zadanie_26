@@ -24,7 +24,7 @@ public class RegisterController {
                            @RequestParam String firstName,
                            @RequestParam String lastName,
                            @RequestParam String password) {
-        userService.addUser(username, firstName, lastName, password);
+        userService.saveUser(username, firstName, lastName, password);
         return "redirect:/login";
     }
 

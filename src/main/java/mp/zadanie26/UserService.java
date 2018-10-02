@@ -13,12 +13,13 @@ public class UserService {
         this.userRoleRepository = userRoleRepository;
     }
 
-    public void addUser(String username, String password, String firstName, String lastName) {
+    public void saveUser(String username, String firstName, String lastName, String password) {
         User user = new User();
         user.setUsername(username);
-        user.setPassword("{noop}"+password);
         user.setFirstName(firstName);
         user.setLastName(lastName);
+        user.setPassword("{noop}"+password);
+        user.setEnabled(true);
         userRepository.save(user);
 
         UserRole userRole = new UserRole();

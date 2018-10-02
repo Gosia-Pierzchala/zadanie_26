@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ustawienia</title>
+</head>
+<body>
+
+<body>
+
+<h2 th:text="'Zalogowany użytkownik to: '+ ${user.username}"></h2>
+
+<h2><a th:href="'/editUser?username=' + ${user.username}">Edytuj swój profil</a></h2>
+<h2><a href="/users">Przejrzyj listę użytkowników</a></h2>
+
+</body>
+
+</body>
+</html>

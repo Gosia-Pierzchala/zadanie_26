@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edycja</title>
+</head>
+
+<h2 th:text="'Zalogowany użytkownik to: '+ ${user.username}"></h2>
+
+<body>
+<div style="margin: auto; width: 400px">
+
+    <form action="/editUser" method="post" th:object="${user}">
+        <p><input type="hidden" th:field="*{username}" placeholder="username" /></p>
+        <p>Imię: <input type="text" th:field="*{firstName}"/></p>
+        <p>Nazwisko: <input type="text" th:field="*{lastName}"/></p>
+        <p>Hasło: <input type="text" th:field="*{password}"/></p>
+        <input type="submit" value="Edytuj" />
+    </form>
+
+</div>
+</body>
+
+</html>
