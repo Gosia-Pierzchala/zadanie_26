@@ -11,8 +11,8 @@
 <body>
 <div style="margin: auto; width: 400px">
 
-    <form action="/editUser" method="post" th:object="${user}">
-        <p><input type="hidden" th:field="*{username}" placeholder="username" /></p>
+    <form th:action="@{/editUser}" method="post" th:object="${user}">
+        <p><input type="hidden" th:field="*{id}" placeholder="id" /></p>
         <p>Imię: <input type="text" th:field="*{firstName}"/></p>
         <p>Nazwisko: <input type="text" th:field="*{lastName}"/></p>
         <p>Hasło: <input type="password" th:field="*{password}"/></p>

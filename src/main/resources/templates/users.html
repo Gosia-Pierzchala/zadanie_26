@@ -25,7 +25,7 @@
         <td th:text="${user.firstName}"></td>
         <td th:text="${user.lastName}"></td>
         <td th:text="${user.username}"></td>
-        <td><a th:href="'/editRole?username=' + ${user.username}">Zmień rolę</a></td>
+        <td><a th:href="'/user?id=' + ${user.id}">Rola</a></td>
     </tr>
     </tbody>
 </table>
