@@ -47,7 +47,11 @@ public class LoginController {
         Optional<User> optional = userRepository.findById(id);
         if(optional.isPresent()) {
             User user = optional.get();
-            model.addAttribute("user", user);
+            UserDataDto userDataDto = new UserDataDto();
+            userDataDto.setUserId(user.getId());
+            userDataDto.setFirstName(user.getFirstName());
+            userDataDto.setLastName(user.getLastName());
+            model.addAttribute("userData", userDataDto);
             return "editUser";
         } else {
             return "redirect:/";
@@ -55,7 +59,18 @@ public class LoginController {
     }
 
     @PostMapping("/editUser")
-    public String edit(User user) {
+    public String edit(UserDataDto userDataDto) {
+
+        Long userId = userDataDto.getUserId();
+        Optional<User> optional = userRepository.findById(userId);
+        User user = optional.orElseThrow(() -> new RuntimeException("User nie znaleziony"));
+        user.setFirstName(userDataDto.getFirstName());
+        user.setLastName(userDataDto.getLastName());
+
+        if(userDataDto.getPassword() != null && !userDataDto.getPassword().isEmpty()) {
+            user.setPassword(passwordEncoder.encode(userDataDto.getPassword()));
+        }
+
         userRepository.save(user);
         return "redirect:/login";
     }

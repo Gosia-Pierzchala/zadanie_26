@@ -6,13 +6,13 @@
     <title>Edycja</title>
 </head>
 
-<h2 th:text="'Zalogowany użytkownik to: '+ ${user.username}"></h2>
+<h2 th:text="'Zalogowany użytkownik to: '+ ${userData.firstName} + ' ' + ${userData.lastName}"></h2>
 
 <body>
 <div style="margin: auto; width: 400px">
 
-    <form th:action="@{/editUser}" method="post" th:object="${user}">
-        <p><input type="hidden" th:field="*{id}" placeholder="id" /></p>
+    <form th:action="@{/editUser}" method="post" th:object="${userData}">
+        <p><input type="hidden" th:field="*{userId}" /></p>
         <p>Imię: <input type="text" th:field="*{firstName}"/></p>
         <p>Nazwisko: <input type="text" th:field="*{lastName}"/></p>
         <p>Hasło: <input type="password" th:field="*{password}"/></p>
