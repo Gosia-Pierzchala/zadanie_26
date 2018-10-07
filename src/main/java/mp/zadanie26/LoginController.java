@@ -49,6 +49,7 @@ public class LoginController {
             User user = optional.get();
             UserDataDto userDataDto = new UserDataDto();
             userDataDto.setUserId(user.getId());
+            userDataDto.setUsername(user.getUsername());
             userDataDto.setFirstName(user.getFirstName());
             userDataDto.setLastName(user.getLastName());
             model.addAttribute("userData", userDataDto);
@@ -85,19 +86,28 @@ public class LoginController {
     @GetMapping("/user")
     public String info(@RequestParam Long id, Model model) {
         Optional<User> optional = userRepository.findById(id);
-        if(optional.isPresent()) {
+        if (optional.isPresent()) {
             User user = optional.get();
             model.addAttribute("user", user);
-            List<UserRole> list = userRoleRepository.findAll();
-            for (int i = 0; i < list.size(); i++) {
-                UserRole userRole = list.get(i);
-                if(user.getUsername().equals(userRole.getUsername())){
-                    model.addAttribute("userRole", userRole);
-                }
-            }
+            UserRole userRole = userRoleRepository.findUserRoleByUsername(user.getUsername());
+            model.addAttribute("userRole", userRole);
             return "userRole";
+        } else return "redirect:/";
+    }
+
+    @GetMapping("/editRole")
+    public String editRole(@RequestParam Long id, Model model) {
+        Optional<UserRole> optional = userRoleRepository.findById(id);
+        if(optional.isPresent()) {
+            UserRole userRole = optional.get();
+            model.addAttribute("userRole", userRole);
+            String role = userRole.getRole();
+            if(role.equals("ROLE_ADMIN")){
+                userRole.setRole("ROLE_USER");
+            } else userRole.setRole("ROLE_ADMIN");
+            userRoleRepository.save(userRole);
+            return "newRole";
         }
         else return "redirect:/";
     }
-
 }

@@ -11,9 +11,7 @@
 
 <div style="margin: auto">
 
-    <h2 th:text="'Nazwa użytkownika: ' + ${user.username}"></h2>
-    <h3 th:text="${userRole.role}"></h3>
-    <h3><a th:href="'/editRole?id=' + ${userRole.id}">Zmień rolę użytkownika</a></h3>
+    <h2 th:text="'Rola użytkownika ' + ${userRole.username} + ' została zmieniona na: ' + ${userRole.role}"></h2>
 
 </div>
 
